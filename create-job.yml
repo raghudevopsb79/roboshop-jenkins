@@ -4,5 +4,10 @@
     - role: jenkins-jobs
       vars:
         jobs:
-          - { jobName: "DEMO1", URL: "google.com", repoName: "google"}
+          - { jobName: "roboshop-frontend", URL: "https://github.com/raghudevopsb79/roboshop-frontend", triggerToken: "roboshop-frontend"}
+          - { jobName: "roboshop-catalogue", URL: "https://github.com/raghudevopsb79/roboshop-catalogue", triggerToken: "roboshop-catalogue"}
+          - { jobName: "roboshop-cart", URL: "https://github.com/raghudevopsb79/roboshop-cart", triggerToken: "roboshop-cart"}
+          - { jobName: "roboshop-user", URL: "https://github.com/raghudevopsb79/roboshop-user", triggerToken: "roboshop-user"}
+          - { jobName: "roboshop-shipping", URL: "https://github.com/raghudevopsb79/roboshop-shipping", triggerToken: "roboshop-shipping"}
+          - { jobName: "roboshop-payment", URL: "https://github.com/raghudevopsb79/roboshop-payment", triggerToken: "roboshop-payment"}
 
