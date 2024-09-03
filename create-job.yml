@@ -4,4 +4,5 @@
     - role: jenkins-jobs
       vars:
         jobs:
-          - DEMO1
+          - { jobName: "DEMO1", URL: "google.com", repoName: "google"}
+

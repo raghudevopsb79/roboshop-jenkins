@@ -19,7 +19,7 @@
     <triggers>
         <com.igalg.jenkins.plugins.mswt.trigger.ComputedFolderWebHookTrigger plugin="multibranch-scan-webhook-trigger@1.0.11">
             <spec></spec>
-            <token>test</token>
+            <token>{{ item.repoName }}</token>
         </com.igalg.jenkins.plugins.mswt.trigger.ComputedFolderWebHookTrigger>
     </triggers>
     <disabled>false</disabled>
@@ -28,7 +28,7 @@
             <jenkins.branch.BranchSource>
                 <source class="jenkins.plugins.git.GitSCMSource" plugin="git@5.4.1">
                     <id>22051f39-36ab-4f72-acc2-cf0825f3ade8</id>
-                    <remote>https://github.com/raghudevopsb79/learn-jenkins.git</remote>
+                    <remote>{{ item.URL }}</remote>
                     <credentialsId></credentialsId>
                     <traits>
                         <jenkins.plugins.git.traits.BranchDiscoveryTrait/>
