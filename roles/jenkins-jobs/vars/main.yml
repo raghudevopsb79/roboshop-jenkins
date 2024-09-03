@@ -1,0 +1,1 @@
+secrets: "{{ lookup('hashi_vault', 'secret=common/data/jenkins token={{ vault_token }} url=https://vault-internal.{{ dns_domain }}:8200 validate_certs=False')}}"

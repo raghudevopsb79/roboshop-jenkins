@@ -7,6 +7,7 @@
   community.general.jenkins_job:
     config: "{{ lookup('file', '/tmp/multi-branch.xml') }}"
     name: "{{ item.jobName }}"
-    password: admin123
+    password: "{{ secrets.password }}"
     url: http://jenkins-internal.rdevopsb79.online:8080
-    user: admin
+    user: "{{ secrets.user }}"
+
