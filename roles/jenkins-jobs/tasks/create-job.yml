@@ -11,3 +11,11 @@
     url: http://jenkins-internal.rdevopsb79.online:8080
     user: "{{ secrets.user }}"
 
+- name: Create WebHook
+  community.general.github_webhook:
+    repository: "{{ item.URL }}"
+    url: http://jenkins.rdevopsb79.online:8080/multibranch-webhook-trigger/invoke?token={{ item.triggerToken }}
+    events:
+      - push
+
+
