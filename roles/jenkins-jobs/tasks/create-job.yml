@@ -13,7 +13,7 @@
 
 - name: Create WebHook
   community.general.github_webhook:
-    repository: "{{ item.URL }}"
+    repository: "{{ item.repoName }}"
     url: http://jenkins.rdevopsb79.online:8080/multibranch-webhook-trigger/invoke?token={{ item.triggerToken }}
     events:
       - push
