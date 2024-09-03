@@ -1,0 +1,48 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject plugin="workflow-multibranch@795.ve0cb_1f45ca_9a_">
+    <actions/>
+    <description></description>
+    <properties/>
+    <folderViews class="jenkins.branch.MultiBranchProjectViewHolder" plugin="branch-api@2.1178.v969d9eb_c728e">
+        <owner class="org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject" reference="../.."/>
+    </folderViews>
+    <healthMetrics/>
+    <icon class="jenkins.branch.MetadataActionFolderIcon" plugin="branch-api@2.1178.v969d9eb_c728e">
+        <owner class="org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject" reference="../.."/>
+    </icon>
+    <orphanedItemStrategy class="com.cloudbees.hudson.plugins.folder.computed.DefaultOrphanedItemStrategy" plugin="cloudbees-folder@6.942.vb_43318a_156b_2">
+        <pruneDeadBranches>true</pruneDeadBranches>
+        <daysToKeep>-1</daysToKeep>
+        <numToKeep>-1</numToKeep>
+        <abortBuilds>false</abortBuilds>
+    </orphanedItemStrategy>
+    <triggers>
+        <com.igalg.jenkins.plugins.mswt.trigger.ComputedFolderWebHookTrigger plugin="multibranch-scan-webhook-trigger@1.0.11">
+            <spec></spec>
+            <token>test</token>
+        </com.igalg.jenkins.plugins.mswt.trigger.ComputedFolderWebHookTrigger>
+    </triggers>
+    <disabled>false</disabled>
+    <sources class="jenkins.branch.MultiBranchProject$BranchSourceList" plugin="branch-api@2.1178.v969d9eb_c728e">
+        <data>
+            <jenkins.branch.BranchSource>
+                <source class="jenkins.plugins.git.GitSCMSource" plugin="git@5.4.1">
+                    <id>22051f39-36ab-4f72-acc2-cf0825f3ade8</id>
+                    <remote>https://github.com/raghudevopsb79/learn-jenkins.git</remote>
+                    <credentialsId></credentialsId>
+                    <traits>
+                        <jenkins.plugins.git.traits.BranchDiscoveryTrait/>
+                    </traits>
+                </source>
+                <strategy class="jenkins.branch.DefaultBranchPropertyStrategy">
+                    <properties class="empty-list"/>
+                </strategy>
+            </jenkins.branch.BranchSource>
+        </data>
+        <owner class="org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject" reference="../.."/>
+    </sources>
+    <factory class="org.jenkinsci.plugins.workflow.multibranch.WorkflowBranchProjectFactory">
+        <owner class="org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject" reference="../.."/>
+        <scriptPath>Jenkinsfile</scriptPath>
+    </factory>
+</org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject>
