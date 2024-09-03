@@ -17,5 +17,7 @@
     url: http://jenkins.rdevopsb79.online:8080/multibranch-webhook-trigger/invoke?token={{ item.triggerToken }}
     events:
       - push
+    user: "{{ secrets.github_user }}"
+    token: "{{ secrets.github_token }}"
 
 
