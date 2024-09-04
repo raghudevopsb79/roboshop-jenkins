@@ -31,11 +31,8 @@ def call() {
     }
 
     stage('Code Quality') {
-      stage('Code Quality') {
         sh 'echo OK'
       }
-    }
-
   }
 
 
