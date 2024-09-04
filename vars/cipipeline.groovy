@@ -15,7 +15,9 @@ def call() {
     }
 
     stage('Build') {
-      sh 'ls -l'
+      if (env.appType == "java") {
+        java.codeBuild()
+      }
     }
   }
 
