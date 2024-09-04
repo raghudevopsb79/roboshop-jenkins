@@ -1,7 +1,7 @@
 def call() {
 
   node() {
-    stage(Build) {
+    stage('Build') {
       sh 'ls -l'
     }
   }
