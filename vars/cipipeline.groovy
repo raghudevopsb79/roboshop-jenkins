@@ -19,25 +19,29 @@ def call() {
         java.codeBuild()
       }
     }
+
+    stage('Unit Tests') {
+      sh 'echo Unit Tests Completed!!'
+    }
+
+    if(env.gitbrname == "main") {
+      stage('Integration Tests') {
+        sh 'echo Integration Test Completed !!'
+      }
+    }
+
+    stage('Code Quality') {
+      stage('Code Quality') {
+        sh 'echo OK'
+      }
+    }
+
   }
 
 
 
 
 
-
-
-//  pipeline {
-//    agent any
-//
-//    stages {
-//
-//      stage('Build') {
-//        steps {
-//          sh 'echo Hello'
-//        }
-//      }
-//
 //      stage('Unit Tests') {
 //        steps {
 //          sh 'echo Hello'
