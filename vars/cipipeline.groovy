@@ -40,7 +40,7 @@ def call() {
         sh "vault login ${token}"
         sh ""
         SONARQUBE_PASSWORD = sh (
-            script: "vault kv get  -format json -mount=common sonarqube | jq .data.data.password",
+            script: "vault kv get  -format json -mount=common sonarqube | jq .data.data.password |sed -e 's/\"//g'",
             returnStdout: true
         ).trim()
         print(SONARQUBE_PASSWORD)
