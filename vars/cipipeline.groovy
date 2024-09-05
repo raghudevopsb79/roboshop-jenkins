@@ -36,7 +36,9 @@ def call() {
     stage('Code Quality') {
 
       def sonar_password = vault.getSecret('common', 'sonarqube', 'username')
-      print(sonar_password)
+      maskPasswords(varPasswordPairs: [[password: encoded_password , var: 'sonar_password']]) {
+        echo "password is ${encoded_password}"
+      }
 
         //sh "/opt/sonar-scanner-6.1.0.4477-linux-x64/bin/sonar-scanner -Dsonar.url=http://sonarqube-internal.rdevopsb79.online:9000 -Dsonar.login=admin -Dsoanr.password={{secrets.sonarqube_password}} -Dsonar.qualitygate.wait=true -Dsonar.projectKey=${env.appName}"
       }
