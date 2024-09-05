@@ -31,7 +31,14 @@ def call() {
     }
 
     stage('Code Quality') {
-        sh "/opt/sonar-scanner-6.1.0.4477-linux-x64/bin/sonar-scanner -Dsonar.url=http://sonarqube-internal.rdevopsb79.online:9000 -Dsonar.login=admin -Dsoanr.password={{secrets.sonarqube_password}} -Dsonar.qualitygate.wait=true -Dsonar.projectKey=${env.appName}"
+      withCredentials([[$class: 'VaultTokenCredentialBinding', credentialsId: 'vault-token', vaultAddr: 'https://vault-internal.rdevopsb79.online:8200']]) {
+        // values will be masked
+        sh 'echo TOKEN=$VAULT_TOKEN'
+        sh 'echo ADDR=$VAULT_ADDR'
+      }
+
+
+        //sh "/opt/sonar-scanner-6.1.0.4477-linux-x64/bin/sonar-scanner -Dsonar.url=http://sonarqube-internal.rdevopsb79.online:9000 -Dsonar.login=admin -Dsoanr.password={{secrets.sonarqube_password}} -Dsonar.qualitygate.wait=true -Dsonar.projectKey=${env.appName}"
       }
   }
 
