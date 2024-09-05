@@ -47,45 +47,15 @@ def call() {
         sh "/opt/sonar-scanner-6.1.0.4477-linux-x64/bin/sonar-scanner -Dsonar.host.url=http://sonarqube-internal.rdevopsb79.online:9000 -Dsonar.login=admin -Dsonar.password=${sonar_password} -Dsonar.qualitygate.wait=true -Dsonar.projectKey=${env.appName} ${env.SONAR_CLASS_PATH}"
       }
     }
+
+    stage('Security Checks') {
+      sh 'echo Hello'
+    }
+
+    stage('Deploy to Dev') {
+      sh 'echo Hello'
+    }
+
   }
 }
 
-
-
-
-
-//      stage('Unit Tests') {
-//        steps {
-//          sh 'echo Hello'
-//        }
-//      }
-//
-//      stage('Integration Tests') {
-//        steps {
-//          sh 'echo Hello'
-//        }
-//      }
-//
-//      stage('Code Quality') {
-//        steps {
-//          sh 'echo Hello'
-//        }
-//      }
-//
-//      stage('Security Checks') {
-//        steps {
-//          sh 'echo Hello'
-//        }
-//      }
-//      stage('Deploy to Dev') {
-//        steps {
-//          sh 'echo Hello'
-//        }
-//      }
-//
-//
-//    }
-//
-//  }
-//
-//}
