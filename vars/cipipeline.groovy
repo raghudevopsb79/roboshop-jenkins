@@ -1,14 +1,14 @@
 def call() {
 
-  env.VAULT_ADDR="https://vault-internal.rdevopsb79.online:8200"
-  env.VAULT_SKIP_VERIFY=1
+  env.VAULT_ADDR = "https://vault-internal.rdevopsb79.online:8200"
+  env.VAULT_SKIP_VERIFY = 1
 
   node() {
 
     stage('Code Checkout') {
       sh 'find . | grep "^./" |xargs rm -rf'
 
-      if(env.TAG_NAME ==~ ".*") {
+      if (env.TAG_NAME ==~ ".*") {
         env.gitbrname = "refs/tags/${env.TAG_NAME}"
       } else {
         env.gitbrname = "${env.BRANCH_NAME}"
@@ -27,7 +27,7 @@ def call() {
       sh 'echo Unit Tests Completed!!'
     }
 
-    if(env.gitbrname == "main") {
+    if (env.gitbrname == "main") {
       stage('Integration Tests') {
         sh 'echo Integration Test Completed !!'
       }
@@ -35,14 +35,13 @@ def call() {
 
     stage('Code Quality') {
 
-      def sonar_password = vault.getSecret('common', 'sonarqube', 'username')
-      maskPasswords(varPasswordPairs: [[password: sonar_password , var: 'sonar_password']]) {
-        echo "password is ${sonar_password}"
+      def sonar_password = vault.getSecret('common', 'sonarqube', 'password')
+      maskPasswords(varPasswordPairs: [[password: sonar_password, var: 'sonar_password']]) {
+        sh "/opt/sonar-scanner-6.1.0.4477-linux-x64/bin/sonar-scanner -Dsonar.url=http://sonarqube-internal.rdevopsb79.online:9000 -Dsonar.login=admin -Dsoanr.password=${sonar_password} -Dsonar.qualitygate.wait=true -Dsonar.projectKey=${env.appName}"
       }
-
-        //sh "/opt/sonar-scanner-6.1.0.4477-linux-x64/bin/sonar-scanner -Dsonar.url=http://sonarqube-internal.rdevopsb79.online:9000 -Dsonar.login=admin -Dsoanr.password={{secrets.sonarqube_password}} -Dsonar.qualitygate.wait=true -Dsonar.projectKey=${env.appName}"
-      }
+    }
   }
+}
 
 
 
@@ -82,4 +81,4 @@ def call() {
 //
 //  }
 //
-}
+//}
