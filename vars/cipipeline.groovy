@@ -53,6 +53,11 @@ def call() {
     }
 
     if (env.gitbrname == "main") {
+
+      stage('Docker Build & Push') {
+        sh 'echo Hello'
+      }
+
       stage('Deploy to Dev') {
         sh 'echo Hello'
       }
