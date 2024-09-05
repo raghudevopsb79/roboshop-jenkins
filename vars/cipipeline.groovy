@@ -38,6 +38,12 @@ def call() {
       withCredentials([string(credentialsId: 'vault-token', variable: 'token')]) {
         // values will be masked
         sh "vault login ${token}"
+        sh ""
+        SONARQUBE_PASSWORD = sh (
+            script: "vault kv get  -format json -mount=common sonarqube | jq .data.data.password",
+            returnStdout: true
+        ).trim()
+        print(SONARQUBE_PASSWORD)
       }
 
 
