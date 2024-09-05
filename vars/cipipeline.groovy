@@ -1,5 +1,8 @@
 def call() {
 
+  env.VAULT_ADDR="https://vault-internal.rdevopsb79.online:8200"
+  env.VAULT_SKIP_VERIFY=1
+
   node() {
 
     stage('Code Checkout') {
@@ -31,10 +34,10 @@ def call() {
     }
 
     stage('Code Quality') {
-      withCredentials([[$class: 'VaultTokenCredentialBinding', credentialsId: 'vault-token', vaultAddr: 'https://vault-internal.rdevopsb79.online:8200']]) {
+
+      withCredentials([string(credentialsId: 'vault-token', variable: 'token')]) {
         // values will be masked
-        sh 'echo TOKEN=$VAULT_TOKEN'
-        sh 'echo ADDR=$VAULT_ADDR'
+        sh "vault login ${token}"
       }
 
 
