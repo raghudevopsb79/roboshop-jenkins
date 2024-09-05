@@ -52,8 +52,10 @@ def call() {
       sh 'echo Hello'
     }
 
-    stage('Deploy to Dev') {
-      sh 'echo Hello'
+    if (env.gitbrname == "main") {
+      stage('Deploy to Dev') {
+        sh 'echo Hello'
+      }
     }
 
   }
