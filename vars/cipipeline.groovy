@@ -49,18 +49,24 @@ def call() {
     }
 
     stage('Security Checks') {
-      sh 'echo Hello'
+      sh 'echo Checkmarx SAST'
+      sh 'echo Checkmarx SCA'
     }
 
     if (env.gitbrname == "main") {
 
       stage('Docker Build & Push') {
-        sh 'echo Hello'
+        sh 'env ; exit 1'
+        sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 739561048503.dkr.ecr.us-east-1.amazonaws.com'
+        sh 'docker build -t roboshop-cart:latest 739561048503.dkr.ecr.us-east-1.amazonaws.com/roboshop-cart: .'
+        sh 'echo prisma palo alto scan'
       }
+
 
       stage('Deploy to Dev') {
         sh 'echo Hello'
       }
+
     }
 
   }
