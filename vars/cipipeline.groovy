@@ -60,8 +60,8 @@ def call() {
         env.GIT_COMMIT = checkout([$class: 'GitSCM', branches: [[name: 'main']],
                                 userRemoteConfigs: [[url: "https://github.com/raghudevopsb79/${env.appName}"]]]).GIT_COMMIT
         sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 739561048503.dkr.ecr.us-east-1.amazonaws.com'
-        sh "docker build -t roboshop-cart:latest 739561048503.dkr.ecr.us-east-1.amazonaws.com/roboshop-cart:${env.GIT_COMMIT} ."
-        sh "docker push roboshop-cart:latest 739561048503.dkr.ecr.us-east-1.amazonaws.com/roboshop-cart:${env.GIT_COMMIT}"
+        sh "docker build -t 739561048503.dkr.ecr.us-east-1.amazonaws.com/roboshop-cart:${env.GIT_COMMIT} ."
+        sh "docker push 739561048503.dkr.ecr.us-east-1.amazonaws.com/roboshop-cart:${env.GIT_COMMIT}"
         sh 'echo prisma palo alto scan'
       }
 
