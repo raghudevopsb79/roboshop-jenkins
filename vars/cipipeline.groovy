@@ -56,6 +56,8 @@ def call() {
     if (env.gitbrname == "main") {
 
       stage('Docker Build & Push') {
+        env.GIT_COMMIT = checkout([$class: 'GitSCM', branches: [[name: 'main']],
+                                userRemoteConfigs: [[url: "https://github.com/raghudevopsb79/${env.appName}"]]]).GIT_COMMIT
         sh 'env ; exit 1'
         sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 739561048503.dkr.ecr.us-east-1.amazonaws.com'
         sh 'docker build -t roboshop-cart:latest 739561048503.dkr.ecr.us-east-1.amazonaws.com/roboshop-cart: .'
