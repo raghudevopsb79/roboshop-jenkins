@@ -67,7 +67,12 @@ def call() {
 
 
       stage('Deploy to Dev') {
-        sh 'echo Hello'
+        // Update argocd password in vault
+        def argocd_password = vault.getSecret('common', 'argocd', 'password')
+        maskPasswords(varPasswordPairs: [[password: argocd_password, var: 'argocd_password']]) {
+          sh "argocd login  argocd-main-dev.rdevopsb79.online:443 --grpc-web --username admin --password ${argocd_password}"
+        }
+
       }
 
     }
