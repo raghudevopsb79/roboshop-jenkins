@@ -72,6 +72,7 @@ def call() {
         maskPasswords(varPasswordPairs: [[password: argocd_password, var: 'argocd_password']]) {
           sh "argocd login  argocd-main-dev.rdevopsb79.online:443 --grpc-web --username admin --password ${argocd_password}"
           sh "git clone https://github.com/raghudevopsb79/roboshop-helm helm"
+          sh "ls -l"
           sh "cp helm/env-dev/${env.appName}.yaml ."
           sh "argocd app create ${env.appName} --project default --sync-policy auto --repo https://github.com/raghudevopsb79/roboshop-helm --path chart --dest-namespace ${env.namespace} --dest-server https://kubernetes.default.svc --values ${env.appName}.yaml"
         }
