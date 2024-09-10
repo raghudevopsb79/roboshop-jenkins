@@ -76,7 +76,7 @@ def call() {
 
 
 
-        sh "gh workflow run deploy.yml -f deploy_commit=${env.GIT_COMMIT} -f app_name ${env.appName}"
+        sh "gh workflow run deploy.yml -f deploy_commit=${env.GIT_COMMIT} -f app_name=${env.appName}"
 
       }
 
