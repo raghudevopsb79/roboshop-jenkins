@@ -10,4 +10,5 @@
           - { jobName: "roboshop-user", repoName: "raghudevopsb79/roboshop-user", triggerToken: "roboshop-user"}
           - { jobName: "roboshop-shipping", repoName: "raghudevopsb79/roboshop-shipping", triggerToken: "roboshop-shipping"}
           - { jobName: "roboshop-payment", repoName: "raghudevopsb79/roboshop-payment", triggerToken: "roboshop-payment"}
+          - { jobName: "roboshop-dispatch", repoName: "raghudevopsb79/roboshop-dispatch", triggerToken: "roboshop-dispatch"}
 
